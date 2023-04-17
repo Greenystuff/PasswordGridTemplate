@@ -46,13 +46,7 @@
                          Height="25"
                          Width="120"
                          VerticalContentAlignment="Center"
-                         TextChanged="tbDestinationChanged">
-                    <TextBox.InputBindings>
-                        <KeyBinding Key="Enter"
-                                    Command="{Binding SubmitCommand}"
-                                    CommandParameter="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type TextBox}}}" />
-                    </TextBox.InputBindings>
-                </TextBox>
+                         TextChanged="tbDestinationChanged"></TextBox>
                 <TextBlock Text="Usage"
                            IsHitTestVisible="False"
                            VerticalAlignment="Center"
@@ -92,13 +86,7 @@
                          Height="25"
                          Width="120"
                          VerticalContentAlignment="Center"
-                         TextChanged="tbIdentifiantChanged">
-                    <TextBox.InputBindings>
-                        <KeyBinding Key="Enter"
-                                    Command="{Binding SubmitCommand}"
-                                    CommandParameter="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type TextBox}}}" />
-                    </TextBox.InputBindings>
-                </TextBox>
+                         TextChanged="tbIdentifiantChanged"></TextBox>
                 <TextBlock Text="Login"
                            IsHitTestVisible="False"
                            VerticalAlignment="Center"
