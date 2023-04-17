@@ -125,13 +125,7 @@
                          Height="25"
                          Width="120"
                          VerticalContentAlignment="Center"
-                         TextChanged="tbPassChanged">
-                    <TextBox.InputBindings>
-                        <KeyBinding Key="Enter"
-                                    Command="{Binding SubmitCommand}"
-                                    CommandParameter="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type TextBox}}}" />
-                    </TextBox.InputBindings>
-                </TextBox>
+                         TextChanged="tbPassChanged"></TextBox>
                 <TextBlock Text="Password"
                            IsHitTestVisible="False"
                            VerticalAlignment="Center"
