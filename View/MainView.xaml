@@ -77,7 +77,7 @@
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="Lock"
                                           Style="{StaticResource menuButtonIcon}" />
-                            <TextBlock Text="Mots de passe"
+                            <TextBlock Text="Passwords"
                                        Style="{StaticResource menuButtonText}" />
                         </StackPanel>
                     </RadioButton>

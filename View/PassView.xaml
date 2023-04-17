@@ -53,7 +53,7 @@
                                     CommandParameter="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type TextBox}}}" />
                     </TextBox.InputBindings>
                 </TextBox>
-                <TextBlock Text="Destination"
+                <TextBlock Text="Usage"
                            IsHitTestVisible="False"
                            VerticalAlignment="Center"
                            Foreground="DarkGray"
@@ -99,7 +99,7 @@
                                     CommandParameter="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type TextBox}}}" />
                     </TextBox.InputBindings>
                 </TextBox>
-                <TextBlock Text="Identifiant"
+                <TextBlock Text="Login"
                            IsHitTestVisible="False"
                            VerticalAlignment="Center"
                            Foreground="DarkGray"
@@ -144,7 +144,7 @@
                                     CommandParameter="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type TextBox}}}" />
                     </TextBox.InputBindings>
                 </TextBox>
-                <TextBlock Text="Mot de passe"
+                <TextBlock Text="Password"
                            IsHitTestVisible="False"
                            VerticalAlignment="Center"
                            Foreground="DarkGray"
@@ -361,7 +361,7 @@
                                         IsReadOnly="True"
                                         Binding="{Binding Id}"
                                         Visibility="Hidden" />
-                    <DataGridTextColumn Header="Destination"
+                    <DataGridTextColumn Header="Usage"
                                         Width="0.3*"
                                         IsReadOnly="True"
                                         Binding="{Binding Destination}">
@@ -376,7 +376,7 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Identifiant"
+                    <DataGridTextColumn Header="Login"
                                         Width="0.3*"
                                         IsReadOnly="True"
                                         Binding="{Binding Identifiant}">
@@ -391,7 +391,7 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Mot de passe"
+                    <DataGridTextColumn Header="Password"
                                         Width="0.3*"
                                         IsReadOnly="True"
                                         Binding="{Binding Pass}">
