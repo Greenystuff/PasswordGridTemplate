@@ -431,6 +431,31 @@
                                              Handler="OnShowChecked" />
                                 <EventSetter Event="CheckBox.Unchecked"
                                              Handler="OnShowUnchecked" />
+                                <Setter Property="ItemsControl.Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type CheckBox}">
+                                            <fa:IconImage x:Name="checkBoxImage"
+                                                          Icon="Eye"
+                                                          Foreground="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridCell}}}"
+                                                          Height="25" 
+                                                          Width="25"/>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsChecked"
+                                                         Value="True">
+                                                    <Setter TargetName="checkBoxImage"
+                                                            Property="Icon"
+                                                            Value="Eye" />
+                                                </Trigger>
+                                                <Trigger Property="IsChecked"
+                                                         Value="False">
+                                                    <Setter TargetName="checkBoxImage"
+                                                            Property="Icon"
+                                                            Value="EyeSlash" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
                             </Style>
                         </DataGridCheckBoxColumn.ElementStyle>
                     </DataGridCheckBoxColumn>
