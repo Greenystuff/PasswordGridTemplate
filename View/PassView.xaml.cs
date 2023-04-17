@@ -1,8 +1,11 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using PasswordGridTemplate.Models;
 using PasswordGridTemplate.Tables;
 using PasswordGridTemplate.ViewModel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace PasswordGridTemplate.View
 {
@@ -77,6 +80,17 @@ namespace PasswordGridTemplate.View
             if (mdpDg.IsLoaded)
             {
                 // Show Password
+                Password LineSelected = (Password)mdpDg.SelectedItem;
+                
+                CheckBox chk = (CheckBox)sender;
+                DataGridRow row = (DataGridRow)mdpDg.ItemContainerGenerator.ContainerFromItem(chk.DataContext);
+                DataGridCell p = (DataGridCell)((TextBlock)mdpDg.Columns[4].GetCellContent(row)).Parent;
+                UIElement child = (UIElement)VisualTreeHelper.GetChild(p, 0);
+                UIElement child2 = (UIElement)VisualTreeHelper.GetChild(child, 0);
+                UIElement child3 = (UIElement)VisualTreeHelper.GetChild(child2, 0);
+                TextBlock tbPass = child3 as TextBlock;
+                tbPass.Text = passwordsTable.GetPasswordById(LineSelected.Id);
+
             }
         }
 
@@ -85,6 +99,14 @@ namespace PasswordGridTemplate.View
             if (mdpDg.IsLoaded)
             {
                 // Hide Password
+                CheckBox chk = (CheckBox)sender;
+                DataGridRow row = (DataGridRow)mdpDg.ItemContainerGenerator.ContainerFromItem(chk.DataContext);
+                DataGridCell p = (DataGridCell)((TextBlock)mdpDg.Columns[4].GetCellContent(row)).Parent;
+                UIElement child = (UIElement)VisualTreeHelper.GetChild(p, 0);
+                UIElement child2 = (UIElement)VisualTreeHelper.GetChild(child, 0);
+                UIElement child3 = (UIElement)VisualTreeHelper.GetChild(child2, 0);
+                TextBlock tbPass = child3 as TextBlock;
+                tbPass.Text = new string('•', tbPass.Text.Length);
             }
         }
 

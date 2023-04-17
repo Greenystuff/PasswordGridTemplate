@@ -39,7 +39,7 @@ namespace PasswordGridTemplate.Tables
                 _Id = reader.GetInt32("id");
                 _Destination = reader.GetString("destination");
                 _Identifiant = reader.GetString("identifiant");
-                _Pass = reader.GetString("pass");
+                _Pass = new string('•', reader.GetString("pass").Length);
                 _ToDeleteInt = reader.GetInt32("toDelete");
                 if (_ToDeleteInt == 1)
                 {
@@ -52,6 +52,19 @@ namespace PasswordGridTemplate.Tables
             reader.Close();
             databaseManager.CloseDbConnection();
             return passList;
+        }
+
+        public string GetPasswordById(int id)
+        {
+            string pass = "";
+            DatabaseManager databaseManager = new DatabaseManager();
+            databaseManager.CreateDbConnection();
+            SQLiteDataReader reader = databaseManager.ExecuteQueryWithReturn("SELECT pass FROM Passwords WHERE id = " + id + ";");
+            while (reader.Read())
+            {
+                pass = reader.GetString("pass");
+            }
+                return pass;
         }
 
         public void UpdateToDelete(bool toDelete, int id)
