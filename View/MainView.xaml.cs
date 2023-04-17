@@ -10,9 +10,14 @@ namespace PasswordGridTemplate.View
     {
         public MainView()
         {
+            DatabaseManager databaseManager = new DatabaseManager();
+            databaseManager.CreateDbFile();
+            databaseManager.CreateDbConnection();
+            databaseManager.CreateTables();
+            databaseManager.CloseDbConnection();
             InitializeComponent();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-            //tbUsername.Text = Settings.Default.user.ToUpper();
+            
         }
 
         [DllImport("user32.dll")]

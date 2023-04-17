@@ -1,11 +1,14 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using PasswordGridTemplate.Models;
+using PasswordGridTemplate.Tables;
 using PasswordGridTemplate.ViewModel;
 
 namespace PasswordGridTemplate.View
 {
     public partial class PassView : UserControl
     {
+        PasswordsTable passwordsTable = new();
         public PassView()
         {
             InitializeComponent();
@@ -27,14 +30,20 @@ namespace PasswordGridTemplate.View
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                //Delete ALL
+                passwordsTable.DeleteAll();
+                mdpDg.ItemsSource = null;
+                PassViewModel.gui.getAllPasswords();
+                mdpDg.ItemsSource = PassViewModel.gui.Passwords;
             }
 
         }
 
         private void DeleteClicked(object sender, RoutedEventArgs e)
         {
-            //Delete Selected
+            passwordsTable.DeleteSelected();
+            mdpDg.ItemsSource = null;
+            PassViewModel.gui.getAllPasswords();
+            mdpDg.ItemsSource = PassViewModel.gui.Passwords;
         }
 
         void OnChecked(object sender, RoutedEventArgs e)
@@ -44,7 +53,8 @@ namespace PasswordGridTemplate.View
                 dynamic selected_row = mdpDg.SelectedItem;
                 if (selected_row != null)
                 {
-                    // Checked to be deleted
+                    Password LineSelected = (Password)mdpDg.SelectedItem;
+                    passwordsTable.UpdateToDelete(true, LineSelected.Id);
                 }
             }
         }
@@ -56,7 +66,8 @@ namespace PasswordGridTemplate.View
                 dynamic selected_row = mdpDg.SelectedItem;
                 if (selected_row != null)
                 {
-                    // Unchecked to not be deleted
+                    Password LineSelected = (Password)mdpDg.SelectedItem;
+                    passwordsTable.UpdateToDelete(false, LineSelected.Id);
                 }
             }
         }
@@ -79,7 +90,11 @@ namespace PasswordGridTemplate.View
 
         private void AddPassClicked(object sender, RoutedEventArgs e)
         {
-            // Button Add Password clicked
+            Password password = new(-1, false, tbDestination.Text, tbIdentifiant.Text, tbPass.Text);
+            passwordsTable.InsertPassword(password);
+            mdpDg.ItemsSource = null;
+            PassViewModel.gui.getAllPasswords();
+            mdpDg.ItemsSource = PassViewModel.gui.Passwords;
         }
 
         private void tbDestinationChanged(object sender, TextChangedEventArgs e)
